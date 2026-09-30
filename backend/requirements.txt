@@ -1,0 +1,43 @@
+fastapi
+uvicorn[standard]
+# Pinned <2.1: 2.1 changed create_engine()'s default driver for a bare
+# "postgresql://" URL (no +driver suffix) to prefer psycopg (v3) over
+# psycopg2, even when only psycopg2-binary is installed and psycopg isn't.
+# Confirmed directly: `create_engine("postgresql://a:b@h/d")` on 2.1.1 in a
+# clean image with only psycopg2-binary raises "ModuleNotFoundError: No
+# module named 'psycopg'". Every DATABASE_URL this project uses (local
+# .env, Railway) is the bare scheme, so this broke container startup with
+# no code change on our side — caught by a real `docker build` + boot test,
+# not by reading changelogs. 2.0.54 is what the long-running local dev venv
+# already has installed and confirmed working.
+sqlalchemy<2.1
+alembic
+psycopg2-binary
+langgraph
+langchain-openai
+langchain-anthropic
+pydantic
+python-dotenv
+pypdf
+python-multipart
+reportlab
+# pypdf's optional AES-decryption path (retrieval/parsing.py) needs this —
+# without it, any AES-encrypted PDF source fails with "cryptography>=3.1 is
+# required for AES algorithm" instead of parsing. pypdf's own "crypto" extra
+# declares cryptography>3.0 with no upper bound; pinned to the current
+# stable release, confirmed compatible with this venv's Python 3.13.
+cryptography==50.0.1
+beautifulsoup4
+httpx
+yfinance
+pandas
+numpy
+tavily-python
+pgvector
+# Password hashing for the demo login. Using bcrypt directly rather than
+# passlib[bcrypt]: passlib's bcrypt handler reads bcrypt.__about__.__version__,
+# which bcrypt>=4.1 removed — passlib then either warns loudly or (on some
+# passlib/bcrypt version pairs) raises outright. Plain bcrypt has no such
+# coupling and is the library passlib itself wraps, so nothing is lost.
+bcrypt
+pyjwt

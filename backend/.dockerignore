@@ -1,0 +1,19 @@
+# Secrets must never be baked into an image — config comes from the platform's env vars.
+.env
+.env.*
+
+# Local-only / regenerated
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+uploads/
+
+# Dev-only. scripts/ holds the manual test harnesses and reset_dev_db.py, a
+# destructive wipe tool that has no business inside a production image.
+# Nothing in the app imports from it.
+scripts/
+
+Dockerfile
+.dockerignore

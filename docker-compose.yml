@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    environment:
+      POSTGRES_DB: oracle
+      POSTGRES_USER: oracle
+      POSTGRES_PASSWORD: oracle123
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

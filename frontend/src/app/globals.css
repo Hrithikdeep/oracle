@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --font-serif: var(--font-serif-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Fallback before next-themes' class attaches — mirrors .dark since
+     defaultTheme="dark". .dark / .light below take over once applied. */
+  --background: #0a0a0a;
+  --surface: #141414;
+  --border: #262626;
+  --text-primary: #fafafa;
+  --text-muted: #a1a1a1;
+
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--text-primary);
+  --primary-foreground: var(--background);
+  --secondary: var(--border);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--border);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--border);
+  --accent-foreground: var(--text-primary);
+  --destructive: oklch(0.704 0.191 22.216);
+  --input: var(--border);
+  --ring: var(--text-muted);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.75rem;
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--text-primary);
+  --sidebar-primary-foreground: var(--background);
+  --sidebar-accent: var(--border);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--text-muted);
+  /* Card depth + page-texture glow — mirrors .dark below since
+     defaultTheme="dark" (see the comment above). */
+  --card-shadow: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 24px -4px oklch(0 0 0 / 0.35);
+  --texture-glow-1: oklch(1 0 0 / 0.05);
+  --texture-glow-2: oklch(0.65 0.15 250 / 0.07);
+}
+
+/* next-themes attribute="class" applies this class literally for the dark theme */
+.dark {
+  --background: #0a0a0a;
+  --surface: #141414;
+  --border: #262626;
+  --text-primary: #fafafa;
+  --text-muted: #a1a1a1;
+
+  --card-shadow: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 24px -4px oklch(0 0 0 / 0.35);
+  --texture-glow-1: oklch(1 0 0 / 0.05);
+  --texture-glow-2: oklch(0.65 0.15 250 / 0.07);
+
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--text-primary);
+  --primary-foreground: var(--background);
+  --secondary: var(--border);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--border);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--border);
+  --accent-foreground: var(--text-primary);
+  --destructive: oklch(0.704 0.191 22.216);
+  --input: var(--border);
+  --ring: var(--text-muted);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--text-primary);
+  --sidebar-primary-foreground: var(--background);
+  --sidebar-accent: var(--border);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--text-muted);
+}
+
+/* next-themes attribute="class" applies this class literally for the light theme */
+.light {
+  --background: #ffffff;
+  --surface: #f5f5f5;
+  --border: #e5e5e5;
+  --text-primary: #0a0a0a;
+  --text-muted: #525252;
+
+  --card-shadow: 0 1px 2px oklch(0 0 0 / 0.04), 0 8px 24px -4px oklch(0 0 0 / 0.06);
+  --texture-glow-1: oklch(0 0 0 / 0.025);
+  --texture-glow-2: oklch(0.55 0.12 250 / 0.03);
+
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--text-primary);
+  --primary-foreground: var(--background);
+  --secondary: var(--border);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--border);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--border);
+  --accent-foreground: var(--text-primary);
+  --destructive: oklch(0.577 0.245 27.325);
+  --input: var(--border);
+  --ring: var(--text-muted);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--text-primary);
+  --sidebar-primary-foreground: var(--background);
+  --sidebar-accent: var(--border);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--text-muted);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* Page-level headings only ("Financial Analysis", "Welcome back, there.",
+     the landing hero) get the serif display face; every other h-tag, and
+     all body/label/data text, stays on the sans font. Only font-family is
+     set here — each h1's own text-size and font-semibold utilities (already
+     present at every call site) still control size and weight, so this
+     composes with them instead of overriding them. */
+  h1 {
+    font-family: var(--font-serif);
+  }
+
+  /* Card-shaped surfaces app-wide: every rounded, bordered container that
+     sits on --surface or --background (stat cards, list-item cards, dropdown
+     menus, table wrappers, the upload dropzone, ...) gets a soft shadow
+     instead of a flat outline. Scoped to the exact utility-class combination
+     these containers already use, rather than a new component, since the
+     app doesn't route them through one shared Card element — see the
+     verification report. Deliberately does not touch border-color/width, so
+     existing hover states (e.g. hover:border-text-muted/40) are unaffected,
+     and an element with its own explicit shadow-* utility keeps that
+     instead: Tailwind's `utilities` layer always wins over this `base`
+     layer, regardless of selector specificity. */
+  .rounded-md.border-border.bg-surface,
+  .rounded-md.border-border.bg-background,
+  .rounded-lg.border-border.bg-surface,
+  .rounded-lg.border-border.bg-background,
+  .rounded-xl.border-border.bg-surface,
+  .rounded-xl.border-border.bg-background {
+    box-shadow: var(--card-shadow);
+  }
+}
+
+/* Section eyebrow labels, e.g. "INVESTMENT INTELLIGENCE", "RECENT PROJECTS" */
+@utility font-mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+/* Opt-in on a page's outer content wrapper (Home, Dashboards, Analysis) — a
+   faint two-point glow, not applied globally, so pages that don't ask for it
+   render exactly as before. Painted as the wrapper's own background, so any
+   child with its own background (every card) naturally sits above it. */
+@utility page-texture {
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -10%, var(--texture-glow-1), transparent 60%),
+    radial-gradient(ellipse 55% 35% at 100% 100%, var(--texture-glow-2), transparent 60%);
+  background-repeat: no-repeat;
+}
