@@ -22,6 +22,19 @@ This is a **portfolio project, not a startup** — the startup version was shelv
 
 ---
 
+## Screenshots
+
+![Home page — workspace overview with real research sessions, recent findings, and risk watch](docs/screenshots/home.png)
+*Home — live workspace overview: stat cards, recent projects, and flagged risks from real completed research sessions.*
+
+![Project Detail page — live progress tracker for a completed research session](docs/screenshots/project-detail.png)
+*Project Detail (Overview tab) — the full agent pipeline's live progress for one research session, from planning through report generation.*
+
+![Analysis page — deterministic financial metrics and trend charts for a real company](docs/screenshots/analysis.png)
+*Analysis — deterministic financial metrics and trend charts computed by the Finance Engine, with an honest "No data" for metrics it doesn't compute.*
+
+---
+
 ## Architecture
 
 Built on **LangGraph's `StateGraph`** — 7 LLM-driven reasoning agents and 3 deterministic services, not a single prompt-chaining loop.
